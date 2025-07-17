@@ -28,17 +28,7 @@ export const componentMap = {
 
   // Features
   TaskCard: () =>
-    import("../components/features/bounce-plan/TaskCard").then(
+    import("../components/feature/bounce-plan/TaskCard").then(
       (m) => m.TaskCard,
-    ),
-  MoodTracker: () =>
-    import("../components/features/mood/MoodTracker").then(
-      (m) => m.MoodTracker,
-    ),
-  JobCard: () =>
-    import("../components/features/tracker/JobCard").then((m) => m.JobCard),
-  BudgetSummary: () =>
-    import("../components/features/budget/BudgetSummary").then(
-      (m) => m.BudgetSummary,
     ),
 };
