@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useAuth } from '../hooks/useAuth';
-import { useTheme } from '../context/ThemeContext';
-import { RootStackParamList } from '../types/navigation';
-import { LoadingOverlay } from '../components/common/LoadingOverlay';
+import React, { useEffect, useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useAuth } from "../hooks/useAuth";
+import { useTheme } from "../context/ThemeContext";
+import { RootStackParamList } from "../types/navigation";
+import { LoadingOverlay } from "../components/common/LoadingOverlay";
 
 // Navigators
-import AuthStackNavigator from './AuthStackNavigator';
-import MainTabNavigator from './MainTabNavigator';
+import AuthStackNavigator from "./AuthStackNavigator";
+import MainTabNavigator from "./MainTabNavigator";
 
 // Modal Screens
-import ResumeScannerScreen from '../screens/resume/ResumeScannerScreen';
-import { View } from 'react-native';
+import ResumeScannerScreen from "../screens/resume/ResumeScannerScreen";
+import { View } from "react-native";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -31,13 +31,15 @@ export default function AppNavigator() {
   }, []);
 
   if (isInitializing || isLoading) {
-    return <LoadingOverlay visible={true} message="Loading..." fullScreen={true} />;
+    return (
+      <LoadingOverlay visible={true} message="Loading..." fullScreen={true} />
+    );
   }
 
   return (
     <NavigationContainer
       theme={{
-        dark: theme.colors.background === '#121212',
+        dark: theme.colors.background === "#121212",
         colors: {
           primary: theme.colors.primary,
           background: theme.colors.background,
@@ -48,20 +50,20 @@ export default function AppNavigator() {
         },
         fonts: {
           regular: {
-            fontFamily: theme.typography?.fontFamily?.regular || 'System',
-            fontWeight: 'normal' as const,
+            fontFamily: theme.typography?.fontFamily?.regular || "System",
+            fontWeight: "normal" as const,
           },
           medium: {
-            fontFamily: theme.typography?.fontFamily?.medium || 'System',
-            fontWeight: '500' as const,
+            fontFamily: theme.typography?.fontFamily?.medium || "System",
+            fontWeight: "500" as const,
           },
           bold: {
-            fontFamily: theme.typography?.fontFamily?.bold || 'System',
-            fontWeight: 'bold' as const,
+            fontFamily: theme.typography?.fontFamily?.bold || "System",
+            fontWeight: "bold" as const,
           },
           heavy: {
-            fontFamily: theme.typography?.fontFamily?.bold || 'System',
-            fontWeight: '700' as const,
+            fontFamily: theme.typography?.fontFamily?.bold || "System",
+            fontWeight: "700" as const,
           },
         },
       }}
@@ -74,24 +76,21 @@ export default function AppNavigator() {
           },
         }}
       >
-        {!user ? (
-          <Stack.Screen 
-            name="Auth" 
+        {true ? (
+          <Stack.Screen
+            name="Auth"
             component={AuthStackNavigator}
             options={{
-              animationTypeForReplace: !user ? 'pop' : 'push',
+              animationTypeForReplace: !user ? "pop" : "push",
             }}
           />
         ) : (
           <>
-            <Stack.Screen 
-              name="Main" 
-              component={MainTabNavigator} 
-            />
+            <Stack.Screen name="Main" component={MainTabNavigator} />
             {/* Modal Screens */}
             <Stack.Group
               screenOptions={{
-                presentation: 'modal',
+                presentation: "modal",
                 headerShown: true,
                 headerStyle: {
                   backgroundColor: theme.colors.surface,
@@ -104,45 +103,45 @@ export default function AppNavigator() {
                 headerShadowVisible: false,
               }}
             >
-              <Stack.Screen 
-                name="AddJobApplication" 
+              <Stack.Screen
+                name="AddJobApplication"
                 component={View} // TODO: Create AddJobApplicationScreen
-                options={{ 
-                  title: 'Add Application',
-                  headerAccessibilityLabel: 'Add job application screen',
-                }} 
+                options={{
+                  title: "Add Application",
+                  headerAccessibilityLabel: "Add job application screen",
+                }}
               />
-              <Stack.Screen 
-                name="EditJobApplication" 
+              <Stack.Screen
+                name="EditJobApplication"
                 component={View} // TODO: Create EditJobApplicationScreen
-                options={{ 
-                  title: 'Edit Application',
-                  headerAccessibilityLabel: 'Edit job application screen',
-                }} 
+                options={{
+                  title: "Edit Application",
+                  headerAccessibilityLabel: "Edit job application screen",
+                }}
               />
-              <Stack.Screen 
-                name="ResumeScanner" 
+              <Stack.Screen
+                name="ResumeScanner"
                 component={ResumeScannerScreen}
-                options={{ 
-                  title: 'Resume Scanner',
-                  headerAccessibilityLabel: 'Resume scanner screen',
-                }} 
+                options={{
+                  title: "Resume Scanner",
+                  headerAccessibilityLabel: "Resume scanner screen",
+                }}
               />
-              <Stack.Screen 
-                name="BudgetDetails" 
+              <Stack.Screen
+                name="BudgetDetails"
                 component={View} // TODO: Create BudgetDetailsScreen
-                options={{ 
-                  title: 'Budget Details',
-                  headerAccessibilityLabel: 'Budget details screen',
-                }} 
+                options={{
+                  title: "Budget Details",
+                  headerAccessibilityLabel: "Budget details screen",
+                }}
               />
-              <Stack.Screen 
-                name="CoachSettings" 
+              <Stack.Screen
+                name="CoachSettings"
                 component={View} // TODO: Create CoachSettingsScreen
-                options={{ 
-                  title: 'Coach Settings',
-                  headerAccessibilityLabel: 'Coach settings screen',
-                }} 
+                options={{
+                  title: "Coach Settings",
+                  headerAccessibilityLabel: "Coach settings screen",
+                }}
               />
             </Stack.Group>
           </>
