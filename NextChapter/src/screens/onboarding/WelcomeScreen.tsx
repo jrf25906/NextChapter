@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   subtitle: {
-    paddingHorizontal: Spacing.lg,
+    paddingHorizontal: 24,
     maxWidth: 320,
   },
   footer: {
