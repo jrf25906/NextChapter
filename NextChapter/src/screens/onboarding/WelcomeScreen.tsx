@@ -64,7 +64,7 @@ function WelcomeScreen() {
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: Colors.background }]}>
+    <View style={[styles.container, { backgroundColor: "#fff" }]}>
       <Animated.View
         style={[
           styles.content,
