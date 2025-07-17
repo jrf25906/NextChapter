@@ -133,7 +133,7 @@ function WelcomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: Spacing.screenPadding,
+    padding: 24,
   },
   loadingContainer: {
     justifyContent: "center",
