@@ -3,17 +3,12 @@ const path = require("path");
 
 const config = getDefaultConfig(__dirname);
 
-// Add web platform support and fix import.meta issues
+// Add web platform support
 config.resolver.platforms = ["ios", "android", "native", "web"];
 
-// Add transformer to handle import.meta for web
-if (config.transformer.minifierConfig) {
-  config.transformer.minifierConfig.keep_fnames = true;
-}
-
+// Ensure unstable_allowRequireContext is enabled for web
 config.transformer = {
   ...config.transformer,
-  babelTransformerPath: require.resolve("metro-react-native-babel-transformer"),
   unstable_allowRequireContext: true,
 };
 
