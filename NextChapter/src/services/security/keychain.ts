@@ -70,7 +70,7 @@ export class KeychainService {
    */
   async removeSecureValue(key: string): Promise<void> {
     try {
-      await Keychain.resetInternetCredentials({ server: this.serviceName });
+      await Keychain.resetInternetCredentials(this.serviceName);
     } catch (error) {
       throw new Error(`Failed to remove secure value for key: ${key}`);
     }
@@ -132,6 +132,6 @@ export class KeychainService {
    * Clear all values from secure storage
    */
   async clearAllSecureValues(): Promise<void> {
-    await Keychain.resetInternetCredentials({ server: this.serviceName });
+    await Keychain.resetInternetCredentials(this.serviceName);
   }
 }
