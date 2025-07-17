@@ -28,12 +28,7 @@ export const componentMap = {
     import("../components/common/EmpathyErrorState").then(
       (m) => m.EmpathyErrorState,
     ),
-  PrimaryButton: () =>
-    import("../components/common/PrimaryButton").then((m) => m.PrimaryButton),
-  SecondaryButton: () =>
-    import("../components/common/SecondaryButton").then(
-      (m) => m.SecondaryButton,
-    ),
+  Button: () => import("../components/common/Button").then((m) => m.default),
 
   // Features
   TaskCard: () =>
