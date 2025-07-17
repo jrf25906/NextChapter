@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: Spacing.xxl,
+    marginBottom: 48,
   },
   title: {
     marginBottom: Spacing.md,
