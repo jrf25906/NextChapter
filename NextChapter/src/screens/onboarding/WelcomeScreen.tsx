@@ -52,10 +52,10 @@ function WelcomeScreen() {
         style={[
           styles.container,
           styles.loadingContainer,
-          { backgroundColor: Colors.background },
+          { backgroundColor: "#fff" },
         ]}
       >
-        <ActivityIndicator size="large" color={Colors.primary} />
+        <ActivityIndicator size="large" color="#2D5A27" />
         <Typography variant="body" color="secondary" style={styles.loadingText}>
           Loading your progress...
         </Typography>
