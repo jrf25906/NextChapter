@@ -1,18 +1,24 @@
-import React, { useEffect, useRef } from 'react';
-import { View, StyleSheet, ActivityIndicator, Animated, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useTheme } from '../../context/ThemeContext';
-import { useOnboarding } from '../../hooks/useOnboarding';
-import { Typography } from '../../components/common/Typography';
-import Button from '../../components/common/Button';
-import { Colors, Spacing, Motion } from '../../theme';
-import { withErrorBoundary } from '../../components/common';
+import React, { useEffect, useRef } from "react";
+import {
+  View,
+  StyleSheet,
+  ActivityIndicator,
+  Animated,
+  TouchableOpacity,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "../../context/ThemeContext";
+import { useOnboarding } from "../../hooks/useOnboarding";
+import { Typography } from "../../components/common/Typography";
+import Button from "../../components/common/Button";
+// import { Colors, Spacing, Motion } from '../../theme';
+import { withErrorBoundary } from "../../components/common";
 
 function WelcomeScreen() {
   const navigation = useNavigation();
   const { theme } = useTheme();
   const { currentStep, isLoading, goToNextStep } = useOnboarding();
-  
+
   // Animation values
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(30)).current;
@@ -37,12 +43,18 @@ function WelcomeScreen() {
   }, [fadeAnim, slideAnim]);
 
   const handleGetStarted = () => {
-    navigation.navigate('LayoffDetails' as never);
+    navigation.navigate("LayoffDetails" as never);
   };
 
   if (isLoading) {
     return (
-      <View style={[styles.container, styles.loadingContainer, { backgroundColor: Colors.background }]}>
+      <View
+        style={[
+          styles.container,
+          styles.loadingContainer,
+          { backgroundColor: Colors.background },
+        ]}
+      >
         <ActivityIndicator size="large" color={Colors.primary} />
         <Typography variant="body" color="secondary" style={styles.loadingText}>
           Loading your progress...
@@ -53,13 +65,13 @@ function WelcomeScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: Colors.background }]}>
-      <Animated.View 
+      <Animated.View
         style={[
           styles.content,
           {
             opacity: fadeAnim,
             transform: [{ translateY: slideAnim }],
-          }
+          },
         ]}
       >
         {/* Illustration placeholder */}
@@ -68,16 +80,27 @@ function WelcomeScreen() {
             [Gentle illustration - sun/growth]
           </Typography>
         </View>
-        
-        <Typography variant="display" color="primary" align="center" style={styles.title}>
+
+        <Typography
+          variant="display"
+          color="primary"
+          align="center"
+          style={styles.title}
+        >
           Welcome to Next Chapter
         </Typography>
-        
-        <Typography variant="body" color="secondary" align="center" style={styles.subtitle}>
-          Let's create your 30-day bounce plan together. This will take about 3 minutes.
+
+        <Typography
+          variant="body"
+          color="secondary"
+          align="center"
+          style={styles.subtitle}
+        >
+          Let's create your 30-day bounce plan together. This will take about 3
+          minutes.
         </Typography>
       </Animated.View>
-      
+
       <Animated.View style={[styles.footer, { opacity: fadeAnim }]}>
         <Button
           title="Get Started"
@@ -87,13 +110,13 @@ function WelcomeScreen() {
           fullWidth
           testID="welcome-get-started"
         />
-        
+
         <View style={styles.signInContainer}>
           <Typography variant="body" color="secondary">
-            Already have an account?{' '}
+            Already have an account?{" "}
           </Typography>
-          <TouchableOpacity 
-            onPress={() => navigation.navigate('Login' as never)}
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Login" as never)}
             accessibilityRole="link"
             accessibilityLabel="Sign in to existing account"
           >
@@ -113,16 +136,16 @@ const styles = StyleSheet.create({
     padding: Spacing.screenPadding,
   },
   loadingContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   loadingText: {
     marginTop: Spacing.lg,
   },
   content: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: Spacing.md,
   },
   illustrationPlaceholder: {
@@ -130,8 +153,8 @@ const styles = StyleSheet.create({
     height: 200,
     backgroundColor: Colors.surfaceSection,
     borderRadius: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: Spacing.xxl,
   },
   title: {
@@ -146,16 +169,16 @@ const styles = StyleSheet.create({
     paddingTop: Spacing.lg,
   },
   signInContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: Spacing.lg,
   },
 });
 
 export default withErrorBoundary(WelcomeScreen, {
   errorMessage: {
-    title: 'Welcome screen loading issue',
-    message: "We're excited to have you! Please refresh to continue."
-  }
+    title: "Welcome screen loading issue",
+    message: "We're excited to have you! Please refresh to continue.",
+  },
 });
