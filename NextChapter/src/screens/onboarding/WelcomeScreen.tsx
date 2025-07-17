@@ -1,18 +1,24 @@
-import React, { useEffect, useRef } from 'react';
-import { View, StyleSheet, ActivityIndicator, Animated, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useTheme } from '../../context/ThemeContext';
-import { useOnboarding } from '../../hooks/useOnboarding';
-import { Typography } from '../../components/common/Typography';
-import Button from '../../components/common/Button';
-import { Colors, Spacing, Motion } from '../../theme';
-import { withErrorBoundary } from '../../components/common';
+import React, { useEffect, useRef } from "react";
+import {
+  View,
+  StyleSheet,
+  ActivityIndicator,
+  Animated,
+  TouchableOpacity,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "../../context/ThemeContext";
+import { useOnboarding } from "../../hooks/useOnboarding";
+import { Typography } from "../../components/common/Typography";
+import Button from "../../components/common/Button";
+// import { Colors, Spacing, Motion } from '../../theme';
+import { withErrorBoundary } from "../../components/common";
 
 function WelcomeScreen() {
   const navigation = useNavigation();
   const { theme } = useTheme();
   const { currentStep, isLoading, goToNextStep } = useOnboarding();
-  
+
   // Animation values
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(30)).current;
@@ -25,25 +31,31 @@ function WelcomeScreen() {
     Animated.parallel([
       Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: Motion.duration.slow,
+        duration: 300,
         useNativeDriver: true,
       }),
       Animated.timing(slideAnim, {
         toValue: 0,
-        duration: Motion.duration.slow,
+        duration: 300,
         useNativeDriver: true,
       }),
     ]).start();
   }, [fadeAnim, slideAnim]);
 
   const handleGetStarted = () => {
-    navigation.navigate('LayoffDetails' as never);
+    navigation.navigate("LayoffDetails" as never);
   };
 
   if (isLoading) {
     return (
-      <View style={[styles.container, styles.loadingContainer, { backgroundColor: Colors.background }]}>
-        <ActivityIndicator size="large" color={Colors.primary} />
+      <View
+        style={[
+          styles.container,
+          styles.loadingContainer,
+          { backgroundColor: "#fff" },
+        ]}
+      >
+        <ActivityIndicator size="large" color="#2D5A27" />
         <Typography variant="body" color="secondary" style={styles.loadingText}>
           Loading your progress...
         </Typography>
@@ -52,14 +64,14 @@ function WelcomeScreen() {
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: Colors.background }]}>
-      <Animated.View 
+    <View style={[styles.container, { backgroundColor: "#fff" }]}>
+      <Animated.View
         style={[
           styles.content,
           {
             opacity: fadeAnim,
             transform: [{ translateY: slideAnim }],
-          }
+          },
         ]}
       >
         {/* Illustration placeholder */}
@@ -68,16 +80,27 @@ function WelcomeScreen() {
             [Gentle illustration - sun/growth]
           </Typography>
         </View>
-        
-        <Typography variant="display" color="primary" align="center" style={styles.title}>
+
+        <Typography
+          variant="display"
+          color="primary"
+          align="center"
+          style={styles.title}
+        >
           Welcome to Next Chapter
         </Typography>
-        
-        <Typography variant="body" color="secondary" align="center" style={styles.subtitle}>
-          Let's create your 30-day bounce plan together. This will take about 3 minutes.
+
+        <Typography
+          variant="body"
+          color="secondary"
+          align="center"
+          style={styles.subtitle}
+        >
+          Let's create your 30-day bounce plan together. This will take about 3
+          minutes.
         </Typography>
       </Animated.View>
-      
+
       <Animated.View style={[styles.footer, { opacity: fadeAnim }]}>
         <Button
           title="Get Started"
@@ -87,13 +110,13 @@ function WelcomeScreen() {
           fullWidth
           testID="welcome-get-started"
         />
-        
+
         <View style={styles.signInContainer}>
           <Typography variant="body" color="secondary">
-            Already have an account?{' '}
+            Already have an account?{" "}
           </Typography>
-          <TouchableOpacity 
-            onPress={() => navigation.navigate('Login' as never)}
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Login" as never)}
             accessibilityRole="link"
             accessibilityLabel="Sign in to existing account"
           >
@@ -110,52 +133,52 @@ function WelcomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: Spacing.screenPadding,
+    padding: 24,
   },
   loadingContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   loadingText: {
-    marginTop: Spacing.lg,
+    marginTop: 24,
   },
   content: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: Spacing.md,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 16,
   },
   illustrationPlaceholder: {
     width: 200,
     height: 200,
-    backgroundColor: Colors.surfaceSection,
+    backgroundColor: "#f5f5f5",
     borderRadius: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: Spacing.xxl,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 48,
   },
   title: {
-    marginBottom: Spacing.md,
+    marginBottom: 16,
   },
   subtitle: {
-    paddingHorizontal: Spacing.lg,
+    paddingHorizontal: 24,
     maxWidth: 320,
   },
   footer: {
-    paddingBottom: Spacing.xl,
-    paddingTop: Spacing.lg,
+    paddingBottom: 32,
+    paddingTop: 24,
   },
   signInContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: Spacing.lg,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 24,
   },
 });
 
 export default withErrorBoundary(WelcomeScreen, {
   errorMessage: {
-    title: 'Welcome screen loading issue',
-    message: "We're excited to have you! Please refresh to continue."
-  }
+    title: "Welcome screen loading issue",
+    message: "We're excited to have you! Please refresh to continue.",
+  },
 });
