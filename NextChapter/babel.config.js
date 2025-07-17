@@ -1,12 +1,7 @@
 module.exports = function (api) {
   api.cache(true);
   return {
-    presets: [
-      [
-        "babel-preset-expo",
-        { web: { unstable_transformProfile: "hermes-stable" } },
-      ],
-    ],
+    presets: ["babel-preset-expo"],
     plugins: [
       [
         "module-resolver",
