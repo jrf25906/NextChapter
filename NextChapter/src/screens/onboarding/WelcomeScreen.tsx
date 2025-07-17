@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     marginBottom: 48,
   },
   title: {
-    marginBottom: Spacing.md,
+    marginBottom: 16,
   },
   subtitle: {
     paddingHorizontal: Spacing.lg,
