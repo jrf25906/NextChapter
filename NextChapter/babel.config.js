@@ -34,21 +34,6 @@ module.exports = function (api) {
           legacy: true,
         },
       ],
-      // Transform import.meta for web compatibility
-      function () {
-        return {
-          visitor: {
-            MetaProperty(path) {
-              if (
-                path.node.meta.name === "import" &&
-                path.node.property.name === "meta"
-              ) {
-                path.replaceWithSourceString("({})");
-              }
-            },
-          },
-        };
-      },
     ],
   };
 };
