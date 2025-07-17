@@ -10,6 +10,7 @@ config.resolver.platforms = ["ios", "android", "native", "web"];
 config.transformer = {
   ...config.transformer,
   unstable_allowRequireContext: true,
+  babelTransformerPath: require.resolve("./src/metro-transformer"),
 };
 
 // Define path aliases that match babel.config.js and tsconfig.json
