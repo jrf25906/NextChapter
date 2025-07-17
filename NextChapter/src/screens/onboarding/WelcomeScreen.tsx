@@ -165,8 +165,8 @@ const styles = StyleSheet.create({
     maxWidth: 320,
   },
   footer: {
-    paddingBottom: Spacing.xl,
-    paddingTop: Spacing.lg,
+    paddingBottom: 32,
+    paddingTop: 24,
   },
   signInContainer: {
     flexDirection: "row",
