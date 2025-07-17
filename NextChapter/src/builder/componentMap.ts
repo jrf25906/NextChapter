@@ -6,14 +6,10 @@ export { ErrorBoundary } from "../components/common/ErrorBoundary";
 export { default as Button } from "../components/common/Button";
 
 // Feature components
-export { TaskCard } from "../components/features/bounce-plan/TaskCard";
-export { MoodTracker } from "../components/features/mood/MoodTracker";
-export { JobCard } from "../components/features/tracker/JobCard";
-export { BudgetSummary } from "../components/features/budget/BudgetSummary";
+export { TaskCard } from "../components/feature/bounce-plan/TaskCard";
 
 // App components
-export { NotificationBadge } from "../components/app/NotificationBadge";
-export { BiometricPrompt } from "../components/app/BiometricPrompt";
+export { NotificationSetup } from "../components/app/NotificationSetup";
 
 // Export all components in a map for Builder.io
 export const componentMap = {
