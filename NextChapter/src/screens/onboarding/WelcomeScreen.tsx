@@ -31,12 +31,12 @@ function WelcomeScreen() {
     Animated.parallel([
       Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: Motion.duration.slow,
+        duration: 300,
         useNativeDriver: true,
       }),
       Animated.timing(slideAnim, {
         toValue: 0,
-        duration: Motion.duration.slow,
+        duration: 300,
         useNativeDriver: true,
       }),
     ]).start();
