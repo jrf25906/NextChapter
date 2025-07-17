@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   illustrationPlaceholder: {
     width: 200,
     height: 200,
-    backgroundColor: Colors.surfaceSection,
+    backgroundColor: "#f5f5f5",
     borderRadius: 100,
     justifyContent: "center",
     alignItems: "center",
