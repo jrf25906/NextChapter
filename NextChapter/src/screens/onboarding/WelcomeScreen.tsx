@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   loadingText: {
-    marginTop: Spacing.lg,
+    marginTop: 24,
   },
   content: {
     flex: 1,
